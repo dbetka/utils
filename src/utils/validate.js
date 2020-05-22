@@ -1,61 +1,58 @@
-class ValidateTools {
-  hasNumber (data) {
+export const validate = {
+  hasNumber(data) {
     return /\d/.test(data);
-  }
+  },
 
-  hasNotNumber (data) {
+  hasNotNumber(data) {
     return !this.hasNumber(data);
-  }
+  },
 
-  isEmail (email) {
+  isEmail(email) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
-  }
+  },
 
-  isNotEmail (email) {
+  isNotEmail(email) {
     return !this.isEmail(email);
-  }
+  },
 
-  isLonger (data, length) {
+  isLonger(data, length) {
     return data.length > length;
-  }
+  },
 
-  isShorter (data, length) {
+  isShorter(data, length) {
     return (data && data.length) ? data.length < length : true;
-  }
+  },
 
-  isNullOrEmpty (data) {
+  isNullOrEmpty(data) {
     return ['', undefined, null].includes(data);
-  }
+  },
 
-  isUndefined (data) {
+  isUndefined(data) {
     return data === undefined;
-  }
+  },
 
-  inRange (value, start, end) {
+  inRange(value, start, end) {
     return value >= start && value <= end;
-  }
+  },
 
-  inNotRange (value, start, end) {
+  inNotRange(value, start, end) {
     return !this.inRange(value, start, end);
-  }
+  },
 
-  contain (value, array) {
+  contain(value, array) {
     return array.includes(value);
-  }
+  },
 
-  notContain (value, array) {
+  notContain(value, array) {
     return !this.contain(value, array);
-  }
+  },
 
-  isBoolean (value) {
+  isBoolean(value) {
     return typeof value === 'boolean';
-  }
+  },
 
-  isNotBoolean (value) {
+  isNotBoolean(value) {
     return !this.isBoolean(value);
-  }
+  },
 }
-
-// export
-module.exports = new ValidateTools();

@@ -1,4 +1,4 @@
-export const arrayUtils = {
+export const array = {
   removeItem (array, toRemove) {
     const indexToRemove = array.indexOf(toRemove);
     return array.splice(indexToRemove, 1);
