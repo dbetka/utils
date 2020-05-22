@@ -1,5 +1,5 @@
 {
-  "name": "@dominik.betka/utils",
+  "name": "@dbetka/utils",
   "version": "0.0.1",
   "description": "Utils for JS",
   "license": "MIT",
@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/dbetka/utils.git"
   },
-  "author": "dominik.betka",
+  "author": "dbetka",
   "bugs": {
     "url": "https://github.com/dbetka/utils/issues"
   },
