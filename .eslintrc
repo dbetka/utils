@@ -1,6 +1,5 @@
 {
   "extends": [
-    "plugin:vue/essential",
     "standard"
   ],
   "rules": {
