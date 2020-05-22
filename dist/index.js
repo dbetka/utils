@@ -1,5 +1,5 @@
 /*!
- * @dbetka/utils v0.0.2
+ * @dbetka/utils v0.1.0
  * (c) dbetka
  * Released under the MIT License.
  */
@@ -150,6 +150,8 @@ var promise = {
   }
 };
 
+var requestHost = '';
+
 function makeFetch(_ref) {
   var url = _ref.url,
       config = _ref.config;
@@ -169,7 +171,12 @@ function addBodyToConfig(config, data) {
 }
 
 var request = {
-  host: PRODUCTION ? '' : 'https://localhost:3030',
+  setHost: function setHost(newHost) {
+    requestHost = newHost;
+  },
+  getHost: function getHost() {
+    return requestHost;
+  },
   dataToPathVariables: function dataToPathVariables(data) {
     var pathData = '';
 
@@ -194,7 +201,7 @@ var request = {
         _ref4$config = _ref4.config,
         config = _ref4$config === void 0 ? {} : _ref4$config;
     var pathVariables = request.dataToPathVariables(data);
-    var fullUrl = request.host + url + pathVariables;
+    var fullUrl = requestHost + url + pathVariables;
     return makeFetch({
       url: fullUrl,
       config: Object.assign({
@@ -208,7 +215,7 @@ var request = {
         data = _ref5.data,
         _ref5$config = _ref5.config,
         config = _ref5$config === void 0 ? {} : _ref5$config;
-    var fullUrl = request.host + url;
+    var fullUrl = requestHost + url;
     addBodyToConfig(config, data);
     return makeFetch({
       url: fullUrl,
@@ -224,7 +231,7 @@ var request = {
         data = _ref6$data === void 0 ? {} : _ref6$data,
         _ref6$config = _ref6.config,
         config = _ref6$config === void 0 ? {} : _ref6$config;
-    var fullUrl = request.host + url;
+    var fullUrl = requestHost + url;
     addBodyToConfig(config, data);
     return makeFetch({
       url: fullUrl,
@@ -240,7 +247,7 @@ var request = {
         data = _ref7$data === void 0 ? {} : _ref7$data,
         _ref7$config = _ref7.config,
         config = _ref7$config === void 0 ? {} : _ref7$config;
-    var fullUrl = request.host + url;
+    var fullUrl = requestHost + url;
     addBodyToConfig(config, data);
     return makeFetch({
       url: fullUrl,
@@ -276,7 +283,7 @@ var validate = {
     return ['', undefined, null].includes(data);
   },
   isUndefined: function isUndefined(data) {
-    return data === undefined;
+    return check.isUndefined(data);
   },
   inRange: function inRange(value, start, end) {
     return value >= start && value <= end;
@@ -291,10 +298,10 @@ var validate = {
     return !this.contain(value, array);
   },
   isBoolean: function isBoolean(value) {
-    return typeof value === 'boolean';
+    return check.isBoolean(value);
   },
   isNotBoolean: function isNotBoolean(value) {
-    return !this.isBoolean(value);
+    return check.isNotBoolean(value);
   }
 };
 
