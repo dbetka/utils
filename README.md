@@ -1,7 +1,9 @@
 # Utils
 Sets of utils for JS.
 
-## Example method usage
+## `logical`
+
+### Example method usage for `logical`
 ```
 import { logical } from '@dbetka/utils'
 
