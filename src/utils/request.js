@@ -1,4 +1,4 @@
-import { logical } from 'src/logical';
+import { check } from './check';
 
 function makeFetch ({ url, config }) {
   return new Promise((resolve, reject) => {
@@ -14,7 +14,7 @@ function makeFetch ({ url, config }) {
 }
 
 function addBodyToConfig (config, data) {
-  if (logical.isDefined(data)) {
+  if (check.isDefined(data)) {
     config.body = JSON.stringify(data);
   }
 }

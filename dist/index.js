@@ -5,7 +5,7 @@
  */
 'use strict';
 
-var logical$1 = require('src/logical');
+Object.defineProperty(exports, '__esModule', { value: true });
 
 function _typeof(obj) {
   "@babel/helpers - typeof";
@@ -79,7 +79,7 @@ function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
-var logical = {
+var check = {
   isUndefined: function isUndefined(value) {
     return typeof value === 'undefined';
   },
@@ -93,7 +93,7 @@ var logical = {
     return value === null;
   },
   isObject: function isObject(value) {
-    return _typeof(value) === 'object' && logical.isNotNull(value);
+    return _typeof(value) === 'object' && check.isNotNull(value);
   },
   isArray: function isArray(value) {
     return Array.isArray(value);
@@ -105,28 +105,28 @@ var logical = {
     return typeof value === 'boolean';
   },
   isDefined: function isDefined(value) {
-    return logical.isUndefined(value) === false;
+    return check.isUndefined(value) === false;
   },
   isNotString: function isNotString(value) {
-    return logical.isString(value) === false;
+    return check.isString(value) === false;
   },
   isNotNumber: function isNotNumber(value) {
-    return logical.isNumber(value) === false;
+    return check.isNumber(value) === false;
   },
   isNotNull: function isNotNull(value) {
-    return logical.isNull(value) === false;
+    return check.isNull(value) === false;
   },
   isNotObject: function isNotObject(value) {
-    return logical.isObject(value) === false;
+    return check.isObject(value) === false;
   },
   isNotArray: function isNotArray(value) {
-    return logical.isArray(value) === false;
+    return check.isArray(value) === false;
   },
   isNotFunction: function isNotFunction(value) {
-    return logical.isFunction(value) === false;
+    return check.isFunction(value) === false;
   },
   isNotBoolean: function isNotBoolean(value) {
-    return logical.isBoolean(value) === false;
+    return check.isBoolean(value) === false;
   }
 };
 
@@ -163,7 +163,7 @@ function makeFetch(_ref) {
 }
 
 function addBodyToConfig(config, data) {
-  if (logical$1.logical.isDefined(data)) {
+  if (check.isDefined(data)) {
     config.body = JSON.stringify(data);
   }
 }
@@ -298,12 +298,22 @@ var validate = {
   }
 };
 
+var uCheck = check;
+var uArray = array;
+var uPromise = promise;
+var uRequest = request;
+var uValidate = validate;
 var index = {
-  logical: logical,
+  check: check,
   array: array,
   promise: promise,
   request: request,
   validate: validate
 };
 
-module.exports = index;
+exports.default = index;
+exports.uArray = uArray;
+exports.uCheck = uCheck;
+exports.uPromise = uPromise;
+exports.uRequest = uRequest;
+exports.uValidate = uValidate;
