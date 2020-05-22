@@ -1,5 +1,7 @@
 import { check } from './check';
 
+let requestHost = '';
+
 function makeFetch ({ url, config }) {
   return new Promise((resolve, reject) => {
     fetch(url, {
@@ -20,7 +22,12 @@ function addBodyToConfig (config, data) {
 }
 
 export const request = {
-  host: PRODUCTION ? '' : 'https://localhost:3030',
+  setHost(newHost) {
+    requestHost = newHost;
+  },
+  getHost() {
+    return requestHost;
+  },
   dataToPathVariables (data) {
     let pathData = '';
 
@@ -35,7 +42,7 @@ export const request = {
   },
   get ({ url = '/', data = {}, config = {} }) {
     const pathVariables = request.dataToPathVariables(data);
-    const fullUrl = request.host + url + pathVariables;
+    const fullUrl = requestHost + url + pathVariables;
 
     return makeFetch({
       url: fullUrl,
@@ -46,7 +53,7 @@ export const request = {
     });
   },
   post ({ url = '/', data, config = {} }) {
-    const fullUrl = request.host + url;
+    const fullUrl = requestHost + url;
     addBodyToConfig(config, data);
 
     return makeFetch({
@@ -58,7 +65,7 @@ export const request = {
     });
   },
   put ({ url = '/', data = {}, config = {} }) {
-    const fullUrl = request.host + url;
+    const fullUrl = requestHost + url;
     addBodyToConfig(config, data);
 
     return makeFetch({
@@ -70,7 +77,7 @@ export const request = {
     });
   },
   delete ({ url = '/', data = {}, config = {} }) {
-    const fullUrl = request.host + url;
+    const fullUrl = requestHost + url;
     addBodyToConfig(config, data);
 
     return makeFetch({

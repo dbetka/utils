@@ -1,3 +1,5 @@
+import { check } from './check';
+
 export const validate = {
   hasNumber(data) {
     return /\d/.test(data);
@@ -29,7 +31,7 @@ export const validate = {
   },
 
   isUndefined(data) {
-    return data === undefined;
+    return check.isUndefined(data);
   },
 
   inRange(value, start, end) {
@@ -49,10 +51,10 @@ export const validate = {
   },
 
   isBoolean(value) {
-    return typeof value === 'boolean';
+    return check.isBoolean(value);
   },
 
   isNotBoolean(value) {
-    return !this.isBoolean(value);
+    return check.isNotBoolean(value;
   },
 }
