@@ -1,6 +1,6 @@
 /*!
- * @dominik.betka/utils v0.0.1
- * (c) dominik.betka
+ * @dbetka/utils v0.0.2
+ * (c) dbetka
  * Released under the MIT License.
  */
 'use strict';
