@@ -89,5 +89,3 @@ export const request = {
     });
   },
 };
-
-window.request = request;

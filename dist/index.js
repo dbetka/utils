@@ -1,5 +1,5 @@
 /*!
- * @dbetka/utils v0.1.0
+ * @dbetka/utils v0.1.1
  * (c) dbetka
  * Released under the MIT License.
  */
@@ -257,7 +257,6 @@ var request = {
     });
   }
 };
-window.request = request;
 
 var validate = {
   hasNumber: function hasNumber(data) {
