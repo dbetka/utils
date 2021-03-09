@@ -9,6 +9,7 @@ npm install -D @dbetka/utils
 ## Base usage
 You can import below sets of utils:
 * check,
+* object,
 * array,
 * promise,
 * request,
@@ -57,6 +58,21 @@ if (u.check.isUndefined(someValue)) {
 * isNotArray
 * isNotFunction
 * isNotBoolean
+
+### Object `u.object`
+
+#### Methods list
+* mergeDeep
+
+#### Example method usage for `u.object.mergeDeep`
+```js
+import u from '@dbetka/utils';
+
+const firstObject = { a: 'a', b: { a: 'a', b: { a: 'a' }}}
+const secondObject = { a: 'b', b: { a: 'b', b: { b: 'a' }}}
+console.log(u.object.mergeDeep(firstObject, secondObject));
+// returns { a: 'b', b: { a: 'b', b: { a: 'a', b: 'a' }}}
+```
 
 ### Object `u.array`
 

@@ -1,5 +1,5 @@
 /*!
- * @dbetka/utils v0.1.1
+ * @dbetka/utils v0.1.2
  * (c) dbetka
  * Released under the MIT License.
  */
@@ -21,6 +21,21 @@ function _typeof(obj) {
   }
 
   return _typeof(obj);
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
 }
 
 function _slicedToArray(arr, i) {
@@ -137,6 +152,35 @@ var array = {
   },
   removeItemByIndex: function removeItemByIndex(array, indexToRemove) {
     return array.splice(indexToRemove, 1);
+  }
+};
+
+var object = {
+  /**
+   * Deep merge two objects.
+   * @param target
+   * @param sources
+   */
+  mergeDeep: function mergeDeep(target) {
+    for (var _len = arguments.length, sources = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      sources[_key - 1] = arguments[_key];
+    }
+
+    if (!sources.length) return target;
+    var source = sources.shift();
+
+    if (check.isObject(target) && check.isObject(source)) {
+      for (var key in source) {
+        if (check.isObject(source[key])) {
+          if (!target[key]) Object.assign(target, _defineProperty({}, key, {}));
+          object.mergeDeep(target[key], source[key]);
+        } else {
+          Object.assign(target, _defineProperty({}, key, source[key]));
+        }
+      }
+    }
+
+    return object.mergeDeep.apply(object, [target].concat(sources));
   }
 };
 
@@ -305,12 +349,14 @@ var validate = {
 };
 
 var uCheck = check;
+var uObject = object;
 var uArray = array;
 var uPromise = promise;
 var uRequest = request;
 var uValidate = validate;
 var index = {
   check: check,
+  object: object,
   array: array,
   promise: promise,
   request: request,
@@ -320,6 +366,7 @@ var index = {
 exports.default = index;
 exports.uArray = uArray;
 exports.uCheck = uCheck;
+exports.uObject = uObject;
 exports.uPromise = uPromise;
 exports.uRequest = uRequest;
 exports.uValidate = uValidate;
