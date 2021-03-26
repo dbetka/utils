@@ -1,6 +1,6 @@
 {
   "name": "@dbetka/utils",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Utils for JS",
   "license": "MIT",
   "main": "./dist/index.js",
