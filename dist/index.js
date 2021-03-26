@@ -155,6 +155,12 @@ var array = {
   }
 };
 
+var number = {
+  roundTo: function roundTo(value, precision) {
+    return Math.round(value * Math.pow(10, precision)) / Math.pow(10, precision);
+  }
+};
+
 var object = {
   /**
    * Deep merge two objects.
@@ -351,6 +357,7 @@ var validate = {
 var uCheck = check;
 var uObject = object;
 var uArray = array;
+var uNumber = number;
 var uPromise = promise;
 var uRequest = request;
 var uValidate = validate;
@@ -358,6 +365,7 @@ var index = {
   check: check,
   object: object,
   array: array,
+  number: number,
   promise: promise,
   request: request,
   validate: validate
@@ -366,7 +374,9 @@ var index = {
 exports.default = index;
 exports.uArray = uArray;
 exports.uCheck = uCheck;
+exports.uNumber = uNumber;
 exports.uObject = uObject;
 exports.uPromise = uPromise;
 exports.uRequest = uRequest;
 exports.uValidate = uValidate;
+//# sourceMappingURL=index.js.map
